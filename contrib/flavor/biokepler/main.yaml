@@ -6,6 +6,7 @@ packages:
   - minimal
   - libraries
   - python
+  - perl
   - java
   - bio_kepler
 libraries:
