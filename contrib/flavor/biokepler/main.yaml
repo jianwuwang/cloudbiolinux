@@ -1,0 +1,11 @@
+---
+# Flavor containing with minimal instructions to install tools for
+# running biokepler workflows.
+# more information of biokepler can be found at www.biokepler.org
+packages:
+  - minimal
+  - libraries
+  - python
+  - java
+  - bio_kepler
+libraries:
