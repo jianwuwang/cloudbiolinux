@@ -109,6 +109,7 @@ def install_qc_filter(env):
     """
     url = "http://weizhong-lab.ucsd.edu/bio-kepler/"
     env.safe_sudo("cpanm install Bio::SeqIO") 
+    env.safe_sudo("rm -rf .cpanm")
     _install_tar_ball(env, url, "qc_filter")
 
 @_if_not_installed("DynamicTrim.pl")
