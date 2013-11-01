@@ -25,7 +25,8 @@ def install_biokepler(env):
     url = "http://www.biokepler.org/files/downloads/biokepler-1.0.deb"
     tool = url[url.rfind('/')+1:]
     _download_install_deb_pkg(env, url, tool)
-    """todo: add kepler.sh link to desktop"""
+    install_dir = shared._get_bin_dir(env)
+    env.safe_sudo("ln -s /opt/kepler/biokepler-1.0/kepler.sh %s/kepler" % install_dir)
 
 def install_qiime(env):
     env.safe_sudo("apt-get install -y --force-yes qiime")
@@ -238,12 +239,9 @@ def _install_tar_ball(env, url, tool):
     with _make_tmp_dir() as work_dir:
         with cd(work_dir):
             _remote_fetch(env, url + tool + ".tar.gz")
-            #env.safe_sudo("tar -xzvpf %s.tar.gz -C %s" % (tool, install_dir))
-            #env.safe_sudo("chown -R %s '%s'" % (env.user, install_dir_parent))
-            #env.safe_sudo("chgrp -R %s '%s'" % (env.user, install_dir_parent))
             env.safe_sudo("tar -xzvpf %s.tar.gz -C %s" % (tool, install_dir_parent))
             env.safe_sudo("chown -R %s:%s '%s'" % (env.user, env.user, install_dir))
-            #env.safe_sudo("chgrp -R %s '%s'" % (env.user, install_dir))
+            env.safe_sudo("chgrp -R %s '%s'" % (env.user, install_dir))
 
 def _install_tar_and_db(env, url, tool):
     install_dir = shared._get_bin_dir(env)
@@ -251,16 +249,8 @@ def _install_tar_and_db(env, url, tool):
     with _make_tmp_dir() as work_dir:
         with cd(work_dir):
             _remote_fetch(env, url + tool + ".tar.gz")
-            #env.safe_sudo("tar -xzvpf %s.tar.gz -C %s" % (tool, install_dir))
-            #env.safe_sudo("chown -R %s '%s'" % (env.user, install_dir_parent))
-            #env.safe_sudo("chgrp -R %s '%s'" % (env.user, install_dir_parent))
             env.safe_sudo("tar -xzvpf %s.tar.gz -C %s" % (tool, install_dir_parent))
             env.safe_sudo("chown -R %s:%s '%s'" % (env.user, env.user, install_dir))
-            #env.safe_sudo("chgrp -R %s '%s'" % (env.user, install_dir))
             _remote_fetch(env, url + tool + "_db.tar.gz")
-            #env.safe_sudo("tar -xzvpf %s_db.tar.gz -C %s" % (tool, install_dir))
-            #env.safe_sudo("chown -R %s '%s'" % (env.user, install_dir_parent))
-            #env.safe_sudo("chgrp -R %s '%s'" % (env.user, install_dir_parent))
             env.safe_sudo("tar -xzvpf %s_db.tar.gz -C %s" % (tool, install_dir_parent))
             env.safe_sudo("chown -R %s:%s '%s'" % (env.user, env.user, install_dir_parent + '/reference_db'))
-            #env.safe_sudo("chgrp -R %s '%s'" % (env.user, install_dir_parent + '/reference_db'))
