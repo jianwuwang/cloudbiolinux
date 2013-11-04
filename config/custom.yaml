@@ -118,6 +118,65 @@ vcr:
   - viralvigor_test
   - viralvigor_validate
   - viralvigor_cleanall
+bio_kepler:
+  kepler:
+    - biokepler
+  rRNA_prediction:
+    - hmm_rrna
+    - blast_rrna
+  tRNA_prediction:
+    - trnascan-se
+  function_annotation:
+    - cog
+    - kog
+    - prk
+    - pfam
+    - tigrfam
+  pathway_annotation:
+    - kegg
+  variant_calling:
+    - breakdancer
+  integrated_bioinformatics_environment:
+    - mothur
+    - qiime
+  orf_prediction:
+    - orf_finder
+    - metagene
+    - fraggene_scan
+  sequence_information:
+    - fna_stat
+    - faa_stat
+  quality_control:
+    - qc_filter_fastq
+    - qc_filter
+    - trim
+#    - uchime already installed on cloudbiolinux
+  format_conversion:
+    - fastq2fasta
+  alignment:
+#    - blastall already installed on cloudbiolinux
+#    - bowtie already installed on cloudbiolinux
+#    - bwa already installed on cloudbiolinux
+    - soap
+#    - samtools already installed on cloudbiolinux
+  assembly:
+    - soapdenovo
+    - ssake
+#    - velvet already installed on cloudbiolinux
+  GUI_for_bioinformatics:
+#    - cytoscape already installed on cloudbiolinux
+#    - rasmol already installed on cloudbiolinux
+  multiple_sequence_alignment:
+#    - clustalw already installed on cloudbiolinux
+#    - clustalx already installed on cloudbiolinux
+#    - muscle already installed on cloudbiolinux
+  RNA-seq_analysis:
+#    - tophat already installed on cloudbiolinux
+#    - cuffdiff already installed on cloudbiolinux
+  clustering:
+    - cd-hit
+    - cd-hit-454
+    - cd-hit-est
 # ToDo -- test on 64bit with bfast
 #- dnaa
 #- srma

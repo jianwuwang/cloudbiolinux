@@ -37,7 +37,7 @@ packages:
   - galaxy
   - galaxy_tools
   - cloudman
-  - biokepler
+  - bio_kepler
 libraries:
   #- haskell-libs
   - perl-libs
