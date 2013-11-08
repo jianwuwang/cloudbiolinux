@@ -26,7 +26,7 @@ def install_biokepler(env):
     tool = url[url.rfind('/')+1:]
     _download_install_deb_pkg(env, url, tool)
     install_dir = shared._get_bin_dir(env)
-    env.safe_sudo("ln -s /opt/kepler/biokepler-1.0/kepler.sh %s/kepler" % install_dir)
+    env.safe_sudo("ln -f -s /opt/kepler/biokepler-1.0/kepler.sh %s/kepler" % install_dir)
 
 def install_qiime(env):
     env.safe_sudo("apt-get install -y --force-yes qiime")
